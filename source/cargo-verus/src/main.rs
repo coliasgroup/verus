@@ -421,8 +421,7 @@ fn parse_verus_driver_version_output(stdout: &str) -> Option<Version> {
 
 #[must_use]
 pub fn help_message() -> &'static str {
-    "TODO
-
+    "\
 Usage:
     cargo verus [OPTIONS] [--] [<ARGS>...]
 
