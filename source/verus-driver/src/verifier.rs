@@ -54,11 +54,11 @@ where
 
     if unparsed.len() != 1 || unparsed[0] != program_name_for_config {
         early_dcx
-            .early_error(format!("leftovers after parsing --verus-arg=<..> args: {:?}", unparsed));
+            .early_err(format!("leftovers after parsing --verus-arg=<..> args: {:?}", unparsed));
     }
 
     if parsed_verus_inner_args.version {
-        early_dcx.early_error("--verus-inner-arg=--version is not supported");
+        early_dcx.early_err("--verus-inner-arg=--version is not supported");
     }
 
     let is_core = parsed_verus_inner_args.vstd == rust_verify::config::Vstd::IsCore;
@@ -94,7 +94,7 @@ where
     }
 
     if status.is_err() || verifier.encountered_vir_error {
-        early_dcx.early_error("verification failed");
+        early_dcx.early_err("verification failed");
     }
 
     if !verifier.args.compile && verifier.args.no_lifetime {
